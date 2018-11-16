@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 2018_11_16_191225) do
   end
 
   create_table "time_entries", force: :cascade do |t|
-    t.decimal "duration"
-    t.text "description"
-    t.bigint "project_id"
     t.bigint "user_id"
+    t.bigint "project_id"
+    t.date "date"
+    t.text "description"
+    t.decimal "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_time_entries_on_project_id"
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_191225) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

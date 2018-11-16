@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+categories = Category.create [{ name: 'Admin' }, { name: 'Pro' }]
+
+users = User.create [{ name: 'Profesional 1', category_id: categories.first },
+                     { name: 'Profesional 2', category_id: categories.last }]
+
+clients = Client.create [{ name: 'Client 1' }, { name: 'Client 2' }]
+
+projects = Project.create [{ name: 'Project 1', client_id: clients.first },
+                           { name: 'Project 2', client_id: clients.last }]
+
+dates = (Date.today - 30.days)..(Date.today)
+
+users.each do |user|
+  projects.each do |project|
+    dates.to_a.each do |date|
+      TimeEntry.create(
+        user_id: user.id,
+        project_id: project.id,
+        date:  date,
+        description: "work of #{user.name} for #{project.name}",
+        duration: 120
+      )
+    end
+  end
+end
