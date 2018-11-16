@@ -78,6 +78,9 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    goldiloader (2.1.2)
+      activerecord (>= 4.2, < 5.3)
+      activesupport (>= 4.2, < 5.3)
     graphiql-rails (1.5.0)
       railties
       sprockets-rails
@@ -207,6 +210,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  goldiloader
   graphiql-rails
   graphql
   jbuilder (~> 2.5)
