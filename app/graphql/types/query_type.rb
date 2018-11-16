@@ -5,6 +5,14 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :time_entries, [Types::TimeEntry], null: true do
+      description 'all time entries'
+    end
+
+    def time_entries
+      ::TimeEntry.all
+    end
+
     # Then provide an implementation:
     def time_entry(id:)
       ::TimeEntry.find_by(id: id)
