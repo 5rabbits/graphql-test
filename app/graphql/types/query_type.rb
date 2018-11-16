@@ -1,13 +1,13 @@
 module Types
   class QueryType < Types::BaseObject
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :time_entry, Types::TimeEntry, null: true do
+      description 'find a time entry'
+      argument :id, ID, required: true
+    end
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    # Then provide an implementation:
+    def time_entry(id:)
+      ::TimeEntry.find_by(id: id)
     end
   end
 end
